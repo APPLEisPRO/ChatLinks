@@ -21,7 +21,8 @@ public class ESChatMain extends JavaPlugin implements CommandExecutor {
 	
 public void onEnable() {
   getCommand("link").setExecutor(this);
-  
+  getCommand("linkreload").setExecutor(new reload(this));
+
   this.saveDefaultConfig();
 
 }
