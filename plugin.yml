@@ -7,3 +7,5 @@ permissions:
 commands:
   link:
       description: Sends a chat link
+  linkreload:
+      description: Reloads config
