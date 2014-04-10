@@ -1,0 +1,30 @@
+#Made by: APPLEisPRO v1.0
+
+#Theres only one command and it is /link
+#Permission for that command is apple.chat.link
+
+#Message if player doesnt have permission
+NoPerm: 'You dont have permission to this command.'
+
+#Error in command
+ComError: 'Error: Use command /link [Link]'
+
+#You sent link successfully
+Success: 'Link sent successfully.'
+
+#Error message too short link
+TooShort: 'Link is too short or it wasnt decent'
+
+#When hovering mouse over link
+hover: 'Click this to open link.'
+
+#If link isnt correct
+FailLink: 'That wasnt decent link!'
+FailLinkLine2: 'It needs to start with https:// or with http://...'
+
+#Message in chat between two \n
+message: 'Player'
+messageln2: 'has sent '
+
+#Message2 end of message
+message2: 'link.'
