@@ -1,10 +1,13 @@
-#Made by: APPLEisPRO v1.0
+#Made by: APPLEisPRO v1.1
 
 #Theres only one command and it is /link
 #Permission for that command is apple.chat.link
 
 #Message if player doesnt have permission
 NoPerm: 'You dont have permission to this command.'
+
+#Message when player reloads config
+reload: 'Config reloaded.'
 
 #Error in command
 ComError: 'Error: Use command /link [Link]'
