@@ -1,0 +1,29 @@
+package main;
+
+import org.bukkit.ChatColor;
+import org.bukkit.command.Command;
+import org.bukkit.command.CommandExecutor;
+import org.bukkit.command.CommandSender;
+import org.bukkit.entity.Player;
+
+public class reload implements CommandExecutor {
+	
+	private final ESChatMain plugin;
+	public reload(ESChatMain plugin) {
+		this.plugin = plugin;
+		}
+	
+	public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
+		Player player = (Player)sender;
+
+		if (label.equalsIgnoreCase("linkreload")) {
+	    	if(!player.hasPermission("apple.chat.reload")) {
+	    		player.sendMessage(ChatColor.RED + plugin.getConfig().getString("NoPerm"));
+	    	}else{
+	    		plugin.reloadConfig();
+	    		player.sendMessage(ChatColor.GREEN+plugin.getConfig().getString("reload"));
+	    	}
+	    	}
+		return false;
+	}
+}
