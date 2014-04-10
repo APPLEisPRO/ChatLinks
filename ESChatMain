@@ -1,0 +1,64 @@
+package main;
+
+import java.util.Arrays;
+
+import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
+import org.bukkit.command.Command;
+import org.bukkit.command.CommandExecutor;
+import org.bukkit.command.CommandSender;
+import org.bukkit.entity.Player;
+import org.bukkit.plugin.java.JavaPlugin;
+
+import JSON.JSONChatClickEventType;
+import JSON.JSONChatColor;
+import JSON.JSONChatExtra;
+import JSON.JSONChatFormat;
+import JSON.JSONChatHoverEventType;
+import JSON.JSONChatMessage;
+
+public class ESChatMain extends JavaPlugin implements CommandExecutor {
+	
+public void onEnable() {
+  getCommand("link").setExecutor(this);
+  
+  this.saveDefaultConfig();
+
+}
+
+public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
+	Player player = (Player)sender;
+    if (label.equalsIgnoreCase("link")) {
+	if(!player.hasPermission("apple.chat.link")) {
+		player.sendMessage(ChatColor.RED + this.getConfig().getString("NoPerm"));
+	} else {
+        if (args.length == 1) {
+        JSONChatMessage message = new JSONChatMessage(this.getConfig().getString("message")+(" ")+player.getName()+(" ")+this.getConfig().getString("messageln2"), JSONChatColor.GREEN, null);
+        JSONChatExtra extra = new JSONChatExtra(this.getConfig().getString("message2"), JSONChatColor.AQUA, Arrays.asList(JSONChatFormat.UNDERLINED));
+        extra.setHoverEvent(JSONChatHoverEventType.SHOW_TEXT, this.getConfig().getString("hover"));
+        String lol = args[0];
+        if(lol.startsWith("https://") || (lol.startsWith("http://"))) {
+        	if(lol.contains(".") && (lol.length() >= 8)) {
+        extra.setClickEvent(JSONChatClickEventType.OPEN_URL, lol);
+        message.addExtra(extra);
+        for(Player p : Bukkit.getOnlinePlayers()){
+            p.sendMessage("\n");
+        	message.sendToPlayer(p);
+            p.sendMessage("\n");
+            }
+		player.sendMessage(ChatColor.GREEN+this.getConfig().getString("Success"));
+        	}else{
+        		player.sendMessage(ChatColor.RED+this.getConfig().getString("TooShort"));
+        	}
+        	}else{
+        	player.sendMessage(ChatColor.RED+this.getConfig().getString("FailLink")+("\n")+this.getConfig().getString("FailLinkLine2"));
+        }
+	}else{
+		player.sendMessage(ChatColor.RED+this.getConfig().getString("ComError"));
+	}
+	}
+		
+}
+	return false;
+}
+}
