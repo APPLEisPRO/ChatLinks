@@ -1,0 +1,9 @@
+main: main.ESChatMain
+name: ChatLinks
+version: 1.0
+author: APPLEisPRO
+description: ChatLinks by APPLEisPRO
+permissions:
+commands:
+  link:
+      description: Sends a chat link
